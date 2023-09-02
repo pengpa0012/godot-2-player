@@ -12,7 +12,7 @@ func _process(_delta):
 			add_player(player)
 
 func add_player(index):
-	players.append(index)
+	players.append(index)  
 	var player_instance = PLAYER_SCENE_PATH.instantiate()
 	player_instance.position.x = randi_range(0, 100)
 	add_child(player_instance)
