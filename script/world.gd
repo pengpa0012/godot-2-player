@@ -15,6 +15,7 @@ func add_player(index):
 	players.append(index)  
 	var player_instance = PLAYER_SCENE_PATH.instantiate()
 	player_instance.position.x = randi_range(0, 100)
+	player_instance.player_index = index
 	add_child(player_instance)
 
 func remove_player(index):

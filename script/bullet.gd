@@ -1,6 +1,10 @@
 extends Node2D
-var speed = 700
+var speed = 1000
 var faceRight = true
+
+func _ready():
+	$AnimationPlayer.play("regular_bullet")
+	
 func _process(delta):
 	if faceRight:
 		self.position.x += speed * delta
