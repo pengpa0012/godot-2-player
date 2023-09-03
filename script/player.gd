@@ -4,14 +4,27 @@ const JUMP_VELOCITY = -400.0
 
 @onready var bullet = preload("res://scenes/bullet.tscn")
 @export var player_index := 0 
+@export var HEALTH := 3
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var faceRight = true
-var canShoot = false
+#var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+#var faceRight = true
+#var canShoot = false
+
+var player_data = {
+	"health": 3,
+	"gravity": ProjectSettings.get_setting("physics/2d/default_gravity"),
+	"faceRight": true,
+	"canShoot": false
+}
+
   
 func _physics_process(delta):
+	
+	if player_data["health"] <= 0:
+		queue_free()
+	
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		velocity.y += player_data["gravity"] * delta
 	
 	if Input.is_joy_button_pressed(player_index, 0) and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -24,12 +37,12 @@ func _physics_process(delta):
 			$AnimationPlayer.play("run")		
 		if directionX > 0:
 			$Sprite2D.flip_h = false
-			$Marker2D.position.x = 18
-			faceRight = true
+			$Marker2D.position.x = 25
+			player_data["faceRight"] = true
 		else:
 			$Sprite2D.flip_h = true
-			$Marker2D.position.x = -18
-			faceRight = false
+			$Marker2D.position.x = -25
+			player_data["faceRight"] = false
 		velocity.x = directionX * SPEED
 	else:
 		if is_on_floor():
@@ -47,11 +60,11 @@ func _physics_process(delta):
 #
 	
 	if Input.is_joy_button_pressed(player_index, 2):
-		if !canShoot:
-			canShoot = true      
+		if !player_data["canShoot"]:
+			player_data["canShoot"] = true      
 			shoot()  # do button pressed processing here 
 	else:
-		canShoot = false
+		player_data["canShoot"] = false
 #
 #	var directionX = Input.get_axis("ui_left", "ui_right")
 #	if directionX:
@@ -76,8 +89,11 @@ func _physics_process(delta):
 func shoot():
 	var newBullet = bullet.instantiate()
 	newBullet.position = $Marker2D.global_position
-	newBullet.faceRight = faceRight
+	newBullet.faceRight = player_data["faceRight"]
 	get_parent().add_child(newBullet)
+	
+func player_hurt(amount):
+	player_data["health"] -= amount
 	
 #func _on_animation_player_animation_finished(anim_name):
 #	if anim_name == "crouch":
