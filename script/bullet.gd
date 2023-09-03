@@ -3,7 +3,7 @@ var speed = 1000
 var faceRight = true
 
 func _ready():
-	$AnimationPlayer.play("regular_bullet")
+	$AnimationPlayer.play("bullet_regular")
 	
 func _process(delta):
 	if faceRight:

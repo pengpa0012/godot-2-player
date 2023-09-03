@@ -1,20 +1,16 @@
 extends CharacterBody2D
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 250.0
+const JUMP_VELOCITY = -350.0
 
 @onready var bullet = preload("res://scenes/bullet.tscn")
-@export var player_index := 0 
-@export var HEALTH := 3
-
-#var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-#var faceRight = true
-#var canShoot = false
+@export var player_index := 0
 
 var player_data = {
 	"health": 3,
 	"gravity": ProjectSettings.get_setting("physics/2d/default_gravity"),
 	"faceRight": true,
-	"canShoot": false
+	"canShoot": false,
+	"bullet": 3
 }
 
   
@@ -60,9 +56,13 @@ func _physics_process(delta):
 #
 	
 	if Input.is_joy_button_pressed(player_index, 2):
-		if !player_data["canShoot"]:
-			player_data["canShoot"] = true      
-			shoot()  # do button pressed processing here 
+		print(player_data["bullet"])
+		if player_data["bullet"] <= 0 and $BulletTimer.time_left <= 0:
+			$BulletTimer.start()
+			
+		if !player_data["canShoot"] and player_data["bullet"] > 0:
+			player_data["canShoot"] = true     
+			shoot() 
 	else:
 		player_data["canShoot"] = false
 #
@@ -90,6 +90,7 @@ func shoot():
 	var newBullet = bullet.instantiate()
 	newBullet.position = $Marker2D.global_position
 	newBullet.faceRight = player_data["faceRight"]
+	player_data["bullet"] -= 1
 	get_parent().add_child(newBullet)
 	
 func player_hurt(amount):
@@ -98,3 +99,7 @@ func player_hurt(amount):
 func _on_animation_player_animation_finished(anim_name):
 	if "death" in anim_name:
 		queue_free()
+
+func _on_bullet_timer_timeout():
+	player_data["bullet"] = 3
+	print("reload")
