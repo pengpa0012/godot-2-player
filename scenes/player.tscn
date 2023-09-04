@@ -159,6 +159,7 @@ scale = Vector2(0.880227, 0.880227)
 
 [node name="Shield" type="Sprite2D" parent="Sprite2D"]
 visible = false
+self_modulate = Color(1, 1, 1, 0.247059)
 position = Vector2(3.12719e-15, -4.72191e-07)
 scale = Vector2(0.222803, 0.222803)
 texture = ExtResource("3_rasbk")
@@ -182,5 +183,10 @@ libraries = {
 [node name="BulletTimer" type="Timer" parent="."]
 wait_time = 5.0
 
+[node name="ShieldTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="body_entered" from="Sprite2D/Shield/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]
+[connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]

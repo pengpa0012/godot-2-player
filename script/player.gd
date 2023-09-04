@@ -5,6 +5,7 @@ const JUMP_VELOCITY = -350.0
 @onready var bullet = preload("res://scenes/bullet.tscn")
 @export var player_index := 0
 @onready var playerShield = $Sprite2D/Shield
+@onready var playerShieldCollision = $Sprite2D/Shield/Area2D/CollisionShape2D
 @onready var playerMarker = $Sprite2D/Marker2D
 
 var player_data = {
@@ -12,31 +13,28 @@ var player_data = {
 	"gravity": ProjectSettings.get_setting("physics/2d/default_gravity"),
 	"faceRight": true,
 	"canShoot": false,
-	"canJump": false,
-	"jumpPressed": false,
-	"shield": false,
 	"bullet": 3
 }
-
+var jump_pressed = false
+var shield_pressed = false
   
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += player_data["gravity"] * delta
-	
-	var jump_button_pressed_now = Input.is_joy_button_pressed(player_index, 0)
-	if jump_button_pressed_now and is_on_floor() and not player_data["jumpPressed"] and player_data["canJump"]:
-		velocity.y = JUMP_VELOCITY
-		player_data["canJump"] = false 
 
-	player_data["jumpPressed"] = jump_button_pressed_now
-	
-#	if Input.is_joy_button_pressed(player_index, 1):
-#		playerShield.visible = true
-#		await get_tree().create_timer(.5).timeout
-#		playerShield.visible = false		
+	if Input.is_joy_button_pressed(player_index, 1) and not shield_pressed:
+		shield_pressed = true
+		button_pressed_once(false)		
+
+	if Input.is_joy_button_pressed(player_index, 0) and not jump_pressed and is_on_floor():
+		jump_pressed = true
+		button_pressed_once(true)
 		
-	if is_on_floor():
-		player_data["canJump"] = true
+	if not Input.is_joy_button_pressed(player_index, 1):
+		shield_pressed = false
+		
+	if not Input.is_joy_button_pressed(player_index, 0):
+		jump_pressed = false
 
 	var directionX = Input.get_joy_axis(player_index, 0)
 	var directionY = Input.get_joy_axis(player_index, 1)
@@ -77,7 +75,15 @@ func _physics_process(delta):
 		player_data["canShoot"] = false
 
 	move_and_slide()
-
+	
+func button_pressed_once(isJump):
+	if isJump:
+		velocity.y = JUMP_VELOCITY
+	else:
+		playerShield.visible = true
+		playerShieldCollision.disabled = false
+		$ShieldTimer.start()
+	
 func shoot():
 	var newBullet = bullet.instantiate()
 	newBullet.position = playerMarker.global_position
@@ -97,3 +103,12 @@ func _on_animation_player_animation_finished(anim_name):
 func _on_bullet_timer_timeout():
 	player_data["bullet"] = 3
 	print("reload")
+
+
+func _on_shield_timer_timeout():
+	playerShieldCollision.disabled = true	
+	playerShield.visible = false
+
+
+func _on_area_2d_body_entered(body):
+	print("ye")
