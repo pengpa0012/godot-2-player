@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b8q75p7vqctx7" path="res://assets/bullet.png" id="2_m80en"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfwk1"]
-size = Vector2(20, 4)
+size = Vector2(16, 4)
 
 [sub_resource type="Animation" id="Animation_wtvbg"]
 length = 0.001

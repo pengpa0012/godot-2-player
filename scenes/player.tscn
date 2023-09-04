@@ -1,7 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://drtoviyhaqgl8"]
+[gd_scene load_steps=13 format=3 uid="uid://drtoviyhaqgl8"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_cxut4"]
 [ext_resource type="Texture2D" uid="uid://bq2piggyynth0" path="res://assets/Player/player.png" id="2_8tevu"]
+[ext_resource type="Texture2D" uid="uid://wlclkcles67p" path="res://assets/Player/shield.png" id="3_rasbk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2j7sr"]
+radius = 47.1619
+height = 126.422
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_514yy"]
 radius = 8.0
@@ -20,6 +25,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Shield:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/Shield/Area2D/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_32h5e"]
@@ -124,11 +153,26 @@ scale = Vector2(1.13607, 1.13607)
 texture = ExtResource("2_8tevu")
 hframes = 120
 
+[node name="Marker2D" type="Marker2D" parent="Sprite2D"]
+position = Vector2(22.0057, -2.64068)
+scale = Vector2(0.880227, 0.880227)
+
+[node name="Shield" type="Sprite2D" parent="Sprite2D"]
+visible = false
+position = Vector2(3.12719e-15, -4.72191e-07)
+scale = Vector2(0.222803, 0.222803)
+texture = ExtResource("3_rasbk")
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="Sprite2D/Shield"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Shield/Area2D"]
+position = Vector2(10, 0)
+shape = SubResource("CapsuleShape2D_2j7sr")
+disabled = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_514yy")
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(25, -3)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
