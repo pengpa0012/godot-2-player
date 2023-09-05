@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://wg0nkcgfghvb"]
+
+[ext_resource type="Script" path="res://script/Booster.gd" id="1_gsfbi"]
+[ext_resource type="Texture2D" uid="uid://pycr1xj6y6a0" path="res://assets/World/Objects/Jumper.png" id="2_f02gp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_weble"]
+size = Vector2(20, 10)
+
+[sub_resource type="Animation" id="Animation_k22cs"]
+resource_name = "boost"
+length = 0.92
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_824rx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uapj6"]
+_data = {
+"RESET": SubResource("Animation_824rx"),
+"boost": SubResource("Animation_k22cs")
+}
+
+[node name="Booster" type="Node2D"]
+script = ExtResource("1_gsfbi")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_weble")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_f02gp")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uapj6")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
