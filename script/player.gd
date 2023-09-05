@@ -4,6 +4,7 @@ const JUMP_VELOCITY = -350.0
 
 @onready var bullet = preload("res://scenes/bullet.tscn")
 @export var player_index := 0
+@export var jump_boosted = false
 @onready var playerShield = $Sprite2D/Shield
 @onready var playerShieldCollision = $Sprite2D/Shield/shieldCollision/CollisionShape2D
 @onready var playerMarker = $Sprite2D/Marker2D
@@ -20,7 +21,11 @@ var jump_pressed = false
 var shield_pressed = false
   
 func _physics_process(delta):
+	if jump_boosted:
+		velocity.y = -600
+		
 	if not is_on_floor():
+		jump_boosted = false
 		velocity.y += player_data["gravity"] * delta
 
 	if Input.is_joy_button_pressed(player_index, 1) and not shield_pressed:
