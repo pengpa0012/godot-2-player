@@ -5,8 +5,9 @@ const JUMP_VELOCITY = -350.0
 @onready var bullet = preload("res://scenes/bullet.tscn")
 @export var player_index := 0
 @onready var playerShield = $Sprite2D/Shield
-@onready var playerShieldCollision = $Sprite2D/Shield/Area2D/CollisionShape2D
+@onready var playerShieldCollision = $Sprite2D/Shield/shieldCollision/CollisionShape2D
 @onready var playerMarker = $Sprite2D/Marker2D
+@export var player_color = "black"
 
 var player_data = {
 	"health": 3,
@@ -40,11 +41,11 @@ func _physics_process(delta):
 	var directionY = Input.get_joy_axis(player_index, 1)
 	
 	if player_data["health"] <= 0:
-		$AnimationPlayer.play("death")
+		$AnimationPlayer.play(player_color + "_death")
 	else:
 		if directionX:
 			if is_on_floor():
-				$AnimationPlayer.play("run")		
+				$AnimationPlayer.play(player_color + "_run")		
 			if directionX > 0:
 				$Sprite2D.scale.x = 1.136
 				playerMarker.position.x = 25
@@ -58,11 +59,11 @@ func _physics_process(delta):
 	#			if directionY:
 	#				$AnimationPlayer.play("crouch")
 	#			else:
-				$AnimationPlayer.play("idle")
+				$AnimationPlayer.play(player_color + "_idle")
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	if not is_on_floor():
-		$AnimationPlayer.play("jump")
+		$AnimationPlayer.play(player_color + "_jump")
 	
 	if Input.is_joy_button_pressed(player_index, 2):
 		if player_data["bullet"] <= 0 and $BulletTimer.time_left <= 0:
@@ -106,9 +107,9 @@ func _on_bullet_timer_timeout():
 
 
 func _on_shield_timer_timeout():
-	playerShieldCollision.disabled = true	
+#	playerShieldCollision.disabled = true	
 	playerShield.visible = false
 
-
-func _on_area_2d_body_entered(body):
-	print("ye")
+func _on_shield_collision_area_entered(area):
+#	if "bulletCollision" in area.name:
+	pass

@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://1ej2t83si6kb"]
+[gd_scene load_steps=5 format=3 uid="uid://1ej2t83si6kb"]
 
 [ext_resource type="Script" path="res://script/world.gd" id="1_n1osx"]
-[ext_resource type="PackedScene" uid="uid://drtoviyhaqgl8" path="res://scenes/player.tscn" id="3_vu35j"]
 [ext_resource type="Texture2D" uid="uid://bhw4iso5plo5m" path="res://assets/World/Tiles/Tileset.png" id="4_ky1kk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y7pye"]
@@ -899,10 +898,6 @@ sources/0 = SubResource("TileSetAtlasSource_y7pye")
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_n1osx")
-
-[node name="Player" parent="." instance=ExtResource("3_vu35j")]
-position = Vector2(31, 347)
-player_index = 1
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_bf60b")
