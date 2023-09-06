@@ -245,7 +245,6 @@ position = Vector2(22.0057, -2.64068)
 scale = Vector2(0.880227, 0.880227)
 
 [node name="Shield" type="Sprite2D" parent="Sprite2D"]
-visible = false
 self_modulate = Color(1, 1, 1, 0.247059)
 position = Vector2(3.12719e-15, -4.72191e-07)
 scale = Vector2(0.222803, 0.222803)

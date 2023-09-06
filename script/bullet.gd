@@ -18,12 +18,10 @@ func _on_visible_on_screen_enabler_2d_screen_exited():
 
 func _on_bullet_collision_body_entered(body):
 	queue_free()	
-	if "Player" in body.name and not parried:
+	if "Player" in body.name:
 		body.player_hurt(1)
 
 
 func _on_bullet_collision_area_entered(area):
 	if "shieldCollision" in area.name:
-		parried = true
-	else:
-		parried = false
+		queue_free()
