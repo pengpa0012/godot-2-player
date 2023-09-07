@@ -1,5 +1,5 @@
 extends CharacterBody2D
-const SPEED = 250.0
+const SPEED = 180.0
 const JUMP_VELOCITY = -350.0
 
 @onready var bullet = preload("res://scenes/bullet.tscn")
@@ -13,6 +13,7 @@ const JUMP_VELOCITY = -350.0
 
 var player_data = {
 	"health": 3,
+	"life": 3,
 	"gravity": ProjectSettings.get_setting("physics/2d/default_gravity"),
 	"faceRight": true,
 	"canShoot": false,
@@ -107,6 +108,7 @@ func player_hurt(amount):
 	
 func _on_animation_player_animation_finished(anim_name):
 	if "death" in anim_name:
+		player_data["life"] -= 1
 		queue_free()
 	if "parry" in anim_name:
 		player_data["shield"] = false
@@ -117,7 +119,7 @@ func _on_bullet_timer_timeout():
 
 
 func _on_shield_timer_timeout():
-#	playerShieldCollision.disabled = true	
+	playerShieldCollision.disabled = true	
 	playerShield.visible = false
 
 func _on_shield_collision_area_entered(area):
