@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://drtoviyhaqgl8"]
+[gd_scene load_steps=19 format=3 uid="uid://drtoviyhaqgl8"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_cxut4"]
 [ext_resource type="Texture2D" uid="uid://bq2piggyynth0" path="res://assets/Player/player.png" id="2_8tevu"]
@@ -216,6 +216,9 @@ tracks/0/keys = {
 "values": [42, 43, 44, 45, 46, 47]
 }
 
+[sub_resource type="Animation" id="Animation_jieva"]
+resource_name = "death"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yj4k7"]
 _data = {
 "RESET": SubResource("Animation_pew5p"),
@@ -228,7 +231,8 @@ _data = {
 "blue_death": SubResource("Animation_yab5b"),
 "blue_idle": SubResource("Animation_4xerk"),
 "blue_jump": SubResource("Animation_kmlvg"),
-"blue_run": SubResource("Animation_7dpcc")
+"blue_run": SubResource("Animation_7dpcc"),
+"death": SubResource("Animation_jieva")
 }
 
 [node name="Player" type="CharacterBody2D"]

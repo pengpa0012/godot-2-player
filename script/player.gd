@@ -9,6 +9,7 @@ const JUMP_VELOCITY = -350.0
 @onready var playerShieldCollision = $Sprite2D/Shield/shieldCollision/CollisionShape2D
 @onready var playerMarker = $Sprite2D/Marker2D
 @export var player_color = "black"
+@export var is_dead = false
 
 var player_data = {
 	"health": 3,
@@ -21,6 +22,10 @@ var jump_pressed = false
 var shield_pressed = false
   
 func _physics_process(delta):
+	if is_dead:
+		$AnimationPlayer.play(player_color + "_death")
+		return
+		
 	if jump_boosted:
 		velocity.y = -600
 		

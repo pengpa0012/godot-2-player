@@ -8,4 +8,5 @@ func _ready():
 
 func _on_area_2d_body_entered(body):
 	if "Player" in body.name:
-		body.queue_free()
+		body.is_dead = true
+#		body.queue_free()
