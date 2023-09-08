@@ -10,6 +10,7 @@ const JUMP_VELOCITY = -350.0
 @onready var playerMarker = $Sprite2D/Marker2D
 @export var player_color = "black"
 @export var is_dead = false
+@onready var display_size = get_viewport().get_visible_rect().size
 
 var player_data = {
 	"health": 3,
@@ -109,13 +110,18 @@ func player_hurt(amount):
 func _on_animation_player_animation_finished(anim_name):
 	if "death" in anim_name:
 		player_data["life"] -= 1
-		queue_free()
+		if player_data["life"] <= 0:
+			queue_free()
+		else:
+			is_dead = false
+			player_data["health"] = 3
+			self.position.x = randi_range(0, display_size.x)
+			self.position.y = 10
 	if "parry" in anim_name:
 		player_data["shield"] = false
 
 func _on_bullet_timer_timeout():
 	player_data["bullet"] = 3
-	print("reload")
 
 
 func _on_shield_timer_timeout():
