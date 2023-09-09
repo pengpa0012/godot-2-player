@@ -18,10 +18,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="Container"]
 layout_mode = 0
-offset_left = 388.0
-offset_top = 284.0
-offset_right = 759.0
-offset_bottom = 390.0
+offset_left = 808.0
+offset_top = 498.0
+offset_right = 1179.0
+offset_bottom = 604.0
 text = "Start"
 
 [connection signal="pressed" from="Container/Button" to="." method="_on_button_pressed"]

@@ -24,15 +24,12 @@ var jump_pressed = false
 var shield_pressed = false
   
 func _physics_process(delta):
+	print(is_dead)
 	if is_dead:
 		$AnimationPlayer.play(player_color + "_death")
 		return
 		
-	if jump_boosted:
-		velocity.y = -600
-		
 	if not is_on_floor():
-		jump_boosted = false
 		velocity.y += player_data["gravity"] * delta
 
 	if Input.is_joy_button_pressed(player_index, 1) and not shield_pressed:
@@ -130,4 +127,9 @@ func _on_shield_timer_timeout():
 
 func _on_shield_collision_area_entered(area):
 #	if "bulletCollision" in area.name:
+	pass
+
+
+func _on_visible_on_screen_enabler_2d_screen_exited():
+	# add player killed here on screen exit
 	pass

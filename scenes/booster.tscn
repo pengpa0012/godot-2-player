@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://wg0nkcgfghvb"]
+[gd_scene load_steps=8 format=3 uid="uid://wg0nkcgfghvb"]
 
 [ext_resource type="Script" path="res://script/Booster.gd" id="1_gsfbi"]
 [ext_resource type="Texture2D" uid="uid://pycr1xj6y6a0" path="res://assets/World/Objects/Jumper.png" id="2_f02gp"]
+[ext_resource type="PackedScene" uid="uid://k5bnrvofvmg4" path="res://scenes/arrow_up.tscn" id="3_s4m7o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_weble"]
 size = Vector2(20, 10)
@@ -60,5 +61,8 @@ hframes = 8
 libraries = {
 "": SubResource("AnimationLibrary_uapj6")
 }
+
+[node name="ArrowUp" parent="." instance=ExtResource("3_s4m7o")]
+position = Vector2(0, -55)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
