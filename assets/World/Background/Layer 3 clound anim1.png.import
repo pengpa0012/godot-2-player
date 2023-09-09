@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xt4o4aqlp2o"
-path="res://.godot/imported/Background.png-f00820013eeddbb53dbcca507b44704c.ctex"
+uid="uid://domnnxse7yeua"
+path="res://.godot/imported/Layer 3 clound anim1.png-d421fa57a03287f313b946eaa6d743db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/World/Background/Background.png"
-dest_files=["res://.godot/imported/Background.png-f00820013eeddbb53dbcca507b44704c.ctex"]
+source_file="res://assets/World/Background/Layer 3 clound anim1.png"
+dest_files=["res://.godot/imported/Layer 3 clound anim1.png-d421fa57a03287f313b946eaa6d743db.ctex"]
 
 [params]
 
