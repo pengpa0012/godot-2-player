@@ -9,6 +9,7 @@ anchors_preset = 0
 script = ExtResource("1_dk1n5")
 
 [node name="Button3" type="Button" parent="."]
+layout_mode = 0
 offset_left = 404.0
 offset_top = 422.0
 offset_right = 644.0
@@ -16,6 +17,7 @@ offset_bottom = 602.0
 icon = ExtResource("1_a8uso")
 
 [node name="Button2" type="Button" parent="."]
+layout_mode = 0
 offset_left = 1191.0
 offset_top = 437.0
 offset_right = 1431.0
@@ -31,3 +33,5 @@ offset_bottom = 590.0
 icon = ExtResource("1_a8uso")
 
 [connection signal="button_down" from="Button3" to="." method="_on_button_3_button_down"]
+[connection signal="button_down" from="Button2" to="." method="_on_button_2_button_down"]
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
