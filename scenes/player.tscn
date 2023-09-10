@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://drtoviyhaqgl8"]
+[gd_scene load_steps=20 format=3 uid="uid://drtoviyhaqgl8"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_cxut4"]
 [ext_resource type="Texture2D" uid="uid://bq2piggyynth0" path="res://assets/Player/player.png" id="2_8tevu"]
@@ -7,6 +7,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2j7sr"]
 radius = 47.1619
 height = 126.422
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wv0o4"]
+size = Vector2(15, 3)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_514yy"]
 radius = 8.0
@@ -263,6 +266,12 @@ position = Vector2(10, 0)
 shape = SubResource("CapsuleShape2D_2j7sr")
 disabled = true
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 15)
+shape = SubResource("RectangleShape2D_wv0o4")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_514yy")
 
@@ -277,10 +286,8 @@ wait_time = 5.0
 [node name="ShieldTimer" type="Timer" parent="."]
 wait_time = 2.0
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-
 [connection signal="area_entered" from="Sprite2D/Shield/shieldCollision" to="." method="_on_shield_collision_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]
 [connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]
-[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

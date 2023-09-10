@@ -22,6 +22,7 @@ var player_data = {
 }
 var jump_pressed = false
 var shield_pressed = false
+var on_platform = false
   
 func _physics_process(delta):
 	if is_dead:
@@ -129,6 +130,9 @@ func _on_shield_collision_area_entered(area):
 	pass
 
 
-func _on_visible_on_screen_enabler_2d_screen_exited():
-	# add player killed here on screen exit
+func _on_area_2d_body_entered(body):
 	pass
+#	if "MovingPlatform" in body.name:
+#		self.global_position.x = body.global_position.x
+#		move_and_slide()
+#		on_platform = true

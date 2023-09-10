@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://bggqhn2ffxcqj"]
+
+[ext_resource type="Texture2D" uid="uid://dn0ncxcbnd1aj" path="res://assets/map.png" id="1_a8uso"]
+[ext_resource type="Script" path="res://script/select_map.gd" id="1_dk1n5"]
+
+[node name="Select Map" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_dk1n5")
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 404.0
+offset_top = 422.0
+offset_right = 644.0
+offset_bottom = 602.0
+icon = ExtResource("1_a8uso")
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 1191.0
+offset_top = 437.0
+offset_right = 1431.0
+offset_bottom = 617.0
+icon = ExtResource("1_a8uso")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 788.0
+offset_top = 410.0
+offset_right = 1028.0
+offset_bottom = 590.0
+icon = ExtResource("1_a8uso")
+
+[connection signal="button_down" from="Button3" to="." method="_on_button_3_button_down"]
