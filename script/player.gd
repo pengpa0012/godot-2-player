@@ -24,7 +24,6 @@ var jump_pressed = false
 var shield_pressed = false
   
 func _physics_process(delta):
-	print(is_dead)
 	if is_dead:
 		$AnimationPlayer.play(player_color + "_death")
 		return
