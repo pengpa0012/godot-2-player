@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://jirgdnv4ws74"]
+[gd_scene load_steps=8 format=3 uid="uid://jirgdnv4ws74"]
 
 [ext_resource type="Script" path="res://script/bullet.gd" id="1_54tga"]
 [ext_resource type="Texture2D" uid="uid://b8q75p7vqctx7" path="res://assets/bullet.png" id="2_m80en"]
@@ -44,7 +44,10 @@ _data = {
 "bullet_regular": SubResource("Animation_glwbt")
 }
 
-[node name="bullet" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ht0ly"]
+size = Vector2(11, 4)
+
+[node name="bullet" type="CharacterBody2D"]
 script = ExtResource("1_54tga")
 
 [node name="bulletCollision" type="Area2D" parent="."]
@@ -66,6 +69,11 @@ root_node = NodePath("../Sprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_sfmha")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 0)
+shape = SubResource("RectangleShape2D_ht0ly")
+debug_color = Color(0.984314, 0, 0.34902, 0.419608)
 
 [connection signal="area_entered" from="bulletCollision" to="." method="_on_bullet_collision_area_entered"]
 [connection signal="body_entered" from="bulletCollision" to="." method="_on_bullet_collision_body_entered"]

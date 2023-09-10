@@ -17,9 +17,12 @@ func _on_visible_on_screen_enabler_2d_screen_exited():
 	queue_free()
 
 func _on_bullet_collision_body_entered(body):
-	queue_free()	
-	if "Player" in body.name:
-		body.player_hurt(1)
+	if "Portal" in body.name or "bullet" in body.name:
+		return
+	else:
+		queue_free()	
+		if "Player" in body.name:
+			body.player_hurt(1)
 
 
 func _on_bullet_collision_area_entered(area):
