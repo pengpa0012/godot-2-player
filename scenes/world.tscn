@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://1ej2t83si6kb"]
+[gd_scene load_steps=13 format=3 uid="uid://1ej2t83si6kb"]
 
 [ext_resource type="Script" path="res://script/world.gd" id="1_n1osx"]
 [ext_resource type="PackedScene" uid="uid://wg0nkcgfghvb" path="res://scenes/booster.tscn" id="3_qyyhe"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b10ah3rhfywhd" path="res://scenes/trap.tscn" id="4_ox1mq"]
 [ext_resource type="Texture2D" uid="uid://xt4o4aqlp2o" path="res://assets/World/Background/Background.png" id="6_qjarn"]
 [ext_resource type="Texture2D" uid="uid://domnnxse7yeua" path="res://assets/World/Background/Layer 3 clound anim1.png" id="7_vefyd"]
+[ext_resource type="PackedScene" uid="uid://c0gr4l5nhq2ax" path="res://scenes/shuriken.tscn" id="8_c61ri"]
 [ext_resource type="PackedScene" uid="uid://c2kjga7if5pbg" path="res://scenes/portal.tscn" id="8_lfg65"]
 [ext_resource type="PackedScene" uid="uid://dmsqt2h5bcfn4" path="res://scenes/moving_platform.tscn" id="9_csgqk"]
 
@@ -968,16 +969,16 @@ position = Vector2(1456, 1017)
 position = Vector2(531, 1017)
 
 [node name="Trap5" parent="Objects" instance=ExtResource("4_ox1mq")]
-position = Vector2(1355, 298)
+position = Vector2(1889, 442)
 
 [node name="Trap6" parent="Objects" instance=ExtResource("4_ox1mq")]
-position = Vector2(1325, 298)
+position = Vector2(1859, 442)
 
 [node name="Trap7" parent="Objects" instance=ExtResource("4_ox1mq")]
-position = Vector2(1294, 298)
+position = Vector2(1828, 442)
 
 [node name="Trap8" parent="Objects" instance=ExtResource("4_ox1mq")]
-position = Vector2(1264, 298)
+position = Vector2(1798, 442)
 
 [node name="Trap2" parent="Objects" instance=ExtResource("4_ox1mq")]
 position = Vector2(874, 506)
@@ -990,6 +991,12 @@ position = Vector2(813, 506)
 
 [node name="Trap4" parent="Objects" instance=ExtResource("4_ox1mq")]
 position = Vector2(783, 506)
+
+[node name="Shuriken2" parent="Objects" instance=ExtResource("8_c61ri")]
+position = Vector2(1102, 287)
+
+[node name="Shuriken" parent="Objects" instance=ExtResource("8_c61ri")]
+position = Vector2(1266, 286)
 
 [node name="Portals" type="Node2D" parent="."]
 position = Vector2(-7, 9)
