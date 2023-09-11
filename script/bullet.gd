@@ -26,5 +26,5 @@ func _on_bullet_collision_body_entered(body):
 
 
 func _on_bullet_collision_area_entered(area):
-	if "shieldCollision" in area.name:
+	if "shieldCollision" in area.name or "bullet" in area.name:
 		queue_free()
