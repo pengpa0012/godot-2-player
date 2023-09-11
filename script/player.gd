@@ -33,6 +33,7 @@ func _physics_process(delta):
 		velocity.y += player_data["gravity"] * delta
 
 	if Input.is_joy_button_pressed(player_index, 1) and not shield_pressed:
+		$AnimationPlayer2.play("shield")		
 		shield_pressed = true
 		button_pressed_once(false)		
 
