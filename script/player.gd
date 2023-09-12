@@ -13,7 +13,7 @@ const JUMP_VELOCITY = -350.0
 @onready var display_size = get_viewport().get_visible_rect().size
 
 var player_data = {
-	"health": 3,
+	"health": 4,
 	"life": 3,
 	"gravity": ProjectSettings.get_setting("physics/2d/default_gravity"),
 	"faceRight": true,
@@ -26,6 +26,7 @@ var on_platform = false
   
 func _physics_process(delta):
 	if is_dead:
+		$Healthbar.value = 0		
 		$AnimationPlayer.play(player_color + "_death")
 		return
 		
@@ -103,6 +104,7 @@ func shoot():
 	get_parent().add_child(newBullet)
 	
 func player_hurt(amount):
+	$Healthbar.value -= 25	
 	player_data["health"] -= amount
 	
 func _on_animation_player_animation_finished(anim_name):
@@ -113,6 +115,7 @@ func _on_animation_player_animation_finished(anim_name):
 		else:
 			is_dead = false
 			player_data["health"] = 3
+			$Healthbar.value = 100
 			self.position.x = randi_range(0, display_size.x)
 			self.position.y = 10
 	if "parry" in anim_name:
