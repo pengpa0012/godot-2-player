@@ -17,6 +17,7 @@ func add_player(index):
 	players.append(index)  
 	var player_instance = PLAYER_SCENE_PATH.instantiate()
 	player_instance.position.x = randi_range(0, display_size.x)
+	player_instance.position.y = 50
 	player_instance.player_index = index
 	player_instance.player_color = colors[randomize]
 	add_child(player_instance)
