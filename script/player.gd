@@ -11,6 +11,7 @@ const JUMP_VELOCITY = -350.0
 @export var player_color = "black"
 @export var is_dead = false
 @onready var display_size = get_viewport().get_visible_rect().size
+@onready var GLOBAL = get_node("/root/Global")
 
 var player_data = {
 	"health": 4,
@@ -31,7 +32,6 @@ func _physics_process(delta):
 		
 	if not is_on_floor():
 		velocity.y += player_data["gravity"] * delta
-
 	if Input.is_joy_button_pressed(player_index, 1) and not shield_pressed:
 		$AnimationPlayer2.play("shield")		
 		shield_pressed = true
@@ -111,6 +111,7 @@ func _on_animation_player_animation_finished(anim_name):
 		player_data["life"] -= 1
 		if player_data["life"] <= 0:
 			queue_free()
+#			GLOBAL.players.remove_at(player_index)
 		else:
 			is_dead = false
 			player_data["health"] = 3

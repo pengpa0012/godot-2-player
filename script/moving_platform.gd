@@ -12,7 +12,6 @@ func _ready():
 	initialPos = self.position.x
 
 func _process(delta):
-	print(self.position.y)
 	if HORIZONTAL:
 		if movingRight:
 			self.position.x += SPEED * delta
