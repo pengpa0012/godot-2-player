@@ -22,7 +22,6 @@ var player_data = {
 }
 var jump_pressed = false
 var shield_pressed = false
-var on_platform = false
   
 func _physics_process(delta):
 	if is_dead:
@@ -135,8 +134,6 @@ func _on_shield_collision_area_entered(area):
 
 
 func _on_area_2d_body_entered(body):
-	pass
-#	if "MovingPlatform" in body.name:
-#		self.global_position.x = body.global_position.x
-#		move_and_slide()
-#		on_platform = true
+	if "MovingPlatform" in body.name:
+		velocity.x = body.velocity.x
+

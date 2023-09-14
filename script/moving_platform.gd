@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends CharacterBody2D
 
 @export var MOVE_OFFSET = 100
 @export var movingRight = true
