@@ -114,7 +114,7 @@ func _on_animation_player_animation_finished(anim_name):
 #			GLOBAL.players.remove_at(player_index)
 		else:
 			is_dead = false
-			player_data["health"] = 3
+			player_data["health"] = 4
 			$Healthbar.value = 100
 			self.position.x = randi_range(0, display_size.x)
 			self.position.y = 10
