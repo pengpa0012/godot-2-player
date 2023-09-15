@@ -5,8 +5,7 @@ const JUMP_VELOCITY = -350.0
 @onready var bullet = preload("res://scenes/bullet.tscn")
 @export var player_index := 0
 @export var jump_boosted = false
-@onready var playerShield = $Sprite2D/Shield
-@onready var playerShieldCollision = $Sprite2D/Shield/shieldCollision/CollisionShape2D
+@onready var playerParry = $Sprite2D/Shield
 @onready var playerMarker = $Sprite2D/Marker2D
 @export var player_color = "black"
 @export var is_dead = false
@@ -22,7 +21,7 @@ var player_data = {
 	"bullet": 3
 }
 var jump_pressed = false
-var shield_pressed = false
+var parry_pressed = false
   
 func _physics_process(delta):
 	if is_dead:
@@ -32,9 +31,9 @@ func _physics_process(delta):
 		
 	if not is_on_floor():
 		velocity.y += player_data["gravity"] * delta
-	if Input.is_joy_button_pressed(player_index, 1) and not shield_pressed:
-		$AnimationPlayer2.play("shield")		
-		shield_pressed = true
+	if Input.is_joy_button_pressed(player_index, 1) and not parry_pressed:
+		$AnimationPlayer2.play("parry")
+		parry_pressed = true
 		button_pressed_once(false)		
 
 	if Input.is_joy_button_pressed(player_index, 0) and not jump_pressed and is_on_floor():
@@ -42,7 +41,7 @@ func _physics_process(delta):
 		button_pressed_once(true)
 		
 	if not Input.is_joy_button_pressed(player_index, 1):
-		shield_pressed = false
+		parry_pressed = false
 		
 	if not Input.is_joy_button_pressed(player_index, 0):
 		jump_pressed = false
@@ -91,9 +90,8 @@ func button_pressed_once(isJump):
 	if isJump:
 		velocity.y = JUMP_VELOCITY
 	else:
-		playerShield.visible = true
-		playerShieldCollision.disabled = false
-		$ShieldTimer.start()
+#		playerParry.visible = true
+		$ParryTimer.start()
 	
 func shoot():
 	var newBullet = bullet.instantiate()
@@ -119,15 +117,10 @@ func _on_animation_player_animation_finished(anim_name):
 			self.position.x = randi_range(0, display_size.x)
 			self.position.y = 10
 	if "parry" in anim_name:
-		player_data["shield"] = false
+		player_data["parry"] = false
 
 func _on_bullet_timer_timeout():
 	player_data["bullet"] = 3
-
-
-func _on_shield_timer_timeout():
-	playerShieldCollision.disabled = true	
-	playerShield.visible = false
 
 func _on_shield_collision_area_entered(area):
 #	if "bulletCollision" in area.name:
@@ -138,3 +131,9 @@ func _on_area_2d_body_entered(body):
 	if "MovingPlatform" in body.name:
 		velocity.x = body.velocity.x
 
+
+
+func _on_parry_timer_timeout():
+	pass
+#	playerParryCollision.disabled = true	
+#	playerParry.visible = false

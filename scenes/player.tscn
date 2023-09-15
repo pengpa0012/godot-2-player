@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_cxut4"]
 [ext_resource type="Texture2D" uid="uid://bq2piggyynth0" path="res://assets/Player/player.png" id="2_8tevu"]
-[ext_resource type="Texture2D" uid="uid://bg5hs33ik8yb5" path="res://assets/Player/shield (3).png" id="3_savks"]
+[ext_resource type="Texture2D" uid="uid://be72kbuk7ksq3" path="res://assets/Player/parry.png" id="3_0bugf"]
 [ext_resource type="Script" path="res://script/Healthbar.gd" id="4_7l7u2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s04m3"]
-radius = 79.4081
+radius = 169.926
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wv0o4"]
 size = Vector2(15, 3)
@@ -214,7 +214,47 @@ _data = {
 "death": SubResource("Animation_jieva")
 }
 
-[sub_resource type="Animation" id="Animation_orpao"]
+[sub_resource type="Animation" id="Animation_3oega"]
+resource_name = "parry"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Shield:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.3001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Shield/shieldCollision/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/Shield:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_rbktm"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -229,39 +269,10 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_tsjk3"]
-resource_name = "shield"
-length = 1.4
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D/Shield/shieldCollision/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8, 1.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/Shield:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 19, 0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w54ur"]
 _data = {
-"RESET": SubResource("Animation_orpao"),
-"shield": SubResource("Animation_tsjk3")
+"RESET": SubResource("Animation_rbktm"),
+"parry": SubResource("Animation_3oega")
 }
 
 [node name="Player" type="CharacterBody2D"]
@@ -279,20 +290,19 @@ position = Vector2(22.0057, -2.64068)
 scale = Vector2(0.880227, 0.880227)
 
 [node name="Shield" type="Sprite2D" parent="Sprite2D"]
+visible = false
 modulate = Color(1, 1, 1, 0.466667)
 position = Vector2(3.12719e-15, -2.64068)
 scale = Vector2(0.264068, 0.264068)
-texture = ExtResource("3_savks")
-flip_h = true
-hframes = 5
-vframes = 4
+texture = ExtResource("3_0bugf")
+hframes = 4
 
 [node name="shieldCollision" type="Area2D" parent="Sprite2D/Shield"]
 position = Vector2(-1.12938e-20, -1.58946e-06)
 scale = Vector2(0.843733, 0.843733)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Shield/shieldCollision"]
-position = Vector2(1.33855e-20, 1.90735e-06)
+position = Vector2(114.57, -27.6549)
 shape = SubResource("CircleShape2D_s04m3")
 disabled = true
 
@@ -318,7 +328,7 @@ libraries = {
 [node name="BulletTimer" type="Timer" parent="."]
 wait_time = 3.0
 
-[node name="ShieldTimer" type="Timer" parent="."]
+[node name="ParryTimer" type="Timer" parent="."]
 wait_time = 5.0
 
 [node name="Healthbar" type="ProgressBar" parent="."]
@@ -334,4 +344,4 @@ script = ExtResource("4_7l7u2")
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]
-[connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]
+[connection signal="timeout" from="ParryTimer" to="." method="_on_parry_timer_timeout"]
