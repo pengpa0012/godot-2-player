@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://1ej2t83si6kb"]
+[gd_scene load_steps=13 format=3 uid="uid://1ej2t83si6kb"]
 
 [ext_resource type="Script" path="res://script/world.gd" id="1_n1osx"]
 [ext_resource type="Texture2D" uid="uid://c8b6bftf7k2y4" path="res://assets/pixil-frame-0 (86).png" id="2_04lff"]
@@ -10,9 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://c0gr4l5nhq2ax" path="res://scenes/shuriken.tscn" id="8_c61ri"]
 [ext_resource type="PackedScene" uid="uid://c2kjga7if5pbg" path="res://scenes/portal.tscn" id="8_lfg65"]
 [ext_resource type="PackedScene" uid="uid://dmsqt2h5bcfn4" path="res://scenes/moving_platform.tscn" id="9_csgqk"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ugnqq"]
-load_path = "res://.godot/imported/Background.png-f00820013eeddbb53dbcca507b44704c.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y7pye"]
 texture = ExtResource("4_ky1kk")
@@ -910,19 +907,12 @@ sources/0 = SubResource("TileSetAtlasSource_y7pye")
 [node name="world" type="Node2D"]
 script = ExtResource("1_n1osx")
 
-[node name="BG" type="Sprite2D" parent="."]
+[node name="Backgrounds" type="Node2D" parent="."]
+
+[node name="BG" type="Sprite2D" parent="Backgrounds"]
 position = Vector2(971, 533)
 scale = Vector2(3.53667, 3.53667)
 texture = ExtResource("2_04lff")
-
-[node name="Backgrounds" type="Node2D" parent="."]
-
-[node name="Background" type="Sprite2D" parent="Backgrounds"]
-visible = false
-modulate = Color(0.835294, 0.835294, 0.835294, 1)
-position = Vector2(730.017, 545.437)
-scale = Vector2(2.76628, 4.30127)
-texture = SubResource("CompressedTexture2D_ugnqq")
 
 [node name="Layer3CloundAnim2" type="Sprite2D" parent="Backgrounds"]
 modulate = Color(0.835294, 0.835294, 0.835294, 1)

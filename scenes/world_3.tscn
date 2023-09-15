@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://ca0xv8ts5wk2w"]
+[gd_scene load_steps=11 format=3 uid="uid://ca0xv8ts5wk2w"]
 
 [ext_resource type="Script" path="res://script/world.gd" id="1_4bgj7"]
 [ext_resource type="Texture2D" uid="uid://bhw4iso5plo5m" path="res://assets/World/Tiles/Tileset.png" id="1_8xsct"]
+[ext_resource type="Texture2D" uid="uid://domnnxse7yeua" path="res://assets/World/Background/Layer 3 clound anim1.png" id="3_jg217"]
 [ext_resource type="PackedScene" uid="uid://dmsqt2h5bcfn4" path="res://scenes/moving_platform.tscn" id="3_rbnui"]
 [ext_resource type="PackedScene" uid="uid://wg0nkcgfghvb" path="res://scenes/booster.tscn" id="3_uy1ju"]
+[ext_resource type="Texture2D" uid="uid://bqem6cb1l5d1a" path="res://assets/World/Background/Layer 1 clound anim1.png" id="4_62f7k"]
 [ext_resource type="PackedScene" uid="uid://c0gr4l5nhq2ax" path="res://scenes/shuriken.tscn" id="5_y4qxb"]
 [ext_resource type="Texture2D" uid="uid://c8b6bftf7k2y4" path="res://assets/pixil-frame-0 (86).png" id="7_5y2bh"]
 
@@ -903,10 +905,29 @@ sources/0 = SubResource("TileSetAtlasSource_y7pye")
 [node name="world3" type="Node2D"]
 script = ExtResource("1_4bgj7")
 
-[node name="BG" type="Sprite2D" parent="."]
+[node name="Backgrounds" type="Node2D" parent="."]
+
+[node name="BG" type="Sprite2D" parent="Backgrounds"]
 position = Vector2(973, 508)
 scale = Vector2(3.47833, 3.47833)
 texture = ExtResource("7_5y2bh")
+
+[node name="Layer3CloundAnim2" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(1873, 930)
+texture = ExtResource("3_jg217")
+
+[node name="Layer3CloundAnim1" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(196, 926)
+texture = ExtResource("3_jg217")
+
+[node name="Layer1CloundAnim2" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(1588, 133)
+texture = ExtResource("4_62f7k")
+flip_h = true
+
+[node name="Layer1CloundAnim1" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(189, 310)
+texture = ExtResource("4_62f7k")
 
 [node name="Objects" type="Node2D" parent="."]
 

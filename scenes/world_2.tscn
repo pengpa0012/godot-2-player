@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0o1bsj80bc4m"]
+[gd_scene load_steps=12 format=3 uid="uid://c0o1bsj80bc4m"]
 
 [ext_resource type="Script" path="res://script/world.gd" id="1_tfy24"]
 [ext_resource type="Texture2D" uid="uid://bhw4iso5plo5m" path="res://assets/World/Tiles/Tileset.png" id="2_ap0fe"]
 [ext_resource type="Texture2D" uid="uid://c8b6bftf7k2y4" path="res://assets/pixil-frame-0 (86).png" id="2_ikqyi"]
 [ext_resource type="PackedScene" uid="uid://wg0nkcgfghvb" path="res://scenes/booster.tscn" id="2_nb3yw"]
+[ext_resource type="Texture2D" uid="uid://bqem6cb1l5d1a" path="res://assets/World/Background/Layer 1 clound anim1.png" id="3_elvrx"]
 [ext_resource type="PackedScene" uid="uid://dmsqt2h5bcfn4" path="res://scenes/moving_platform.tscn" id="3_k7ew0"]
 [ext_resource type="PackedScene" uid="uid://c0gr4l5nhq2ax" path="res://scenes/shuriken.tscn" id="4_8c8gu"]
+[ext_resource type="Texture2D" uid="uid://domnnxse7yeua" path="res://assets/World/Background/Layer 3 clound anim1.png" id="4_wjnc5"]
 [ext_resource type="PackedScene" uid="uid://b10ah3rhfywhd" path="res://scenes/trap.tscn" id="5_3pw6r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y7pye"]
@@ -904,10 +906,33 @@ sources/0 = SubResource("TileSetAtlasSource_y7pye")
 [node name="world2" type="Node2D"]
 script = ExtResource("1_tfy24")
 
-[node name="BG" type="Sprite2D" parent="."]
+[node name="Background" type="Node2D" parent="."]
+
+[node name="BG" type="Sprite2D" parent="Background"]
 position = Vector2(959, 531)
 scale = Vector2(3.63667, 3.63667)
 texture = ExtResource("2_ikqyi")
+
+[node name="Layer1CloundAnim2" type="Sprite2D" parent="Background"]
+position = Vector2(1658, 178)
+texture = ExtResource("3_elvrx")
+flip_h = true
+
+[node name="Layer1CloundAnim1" type="Sprite2D" parent="Background"]
+position = Vector2(226, 186)
+texture = ExtResource("3_elvrx")
+
+[node name="Layer3CloundAnim3" type="Sprite2D" parent="Background"]
+position = Vector2(56, 991)
+texture = ExtResource("4_wjnc5")
+
+[node name="Layer3CloundAnim2" type="Sprite2D" parent="Background"]
+position = Vector2(979, 323)
+texture = ExtResource("4_wjnc5")
+
+[node name="Layer3CloundAnim1" type="Sprite2D" parent="Background"]
+position = Vector2(1740, 992)
+texture = ExtResource("4_wjnc5")
 
 [node name="Objects" type="Node2D" parent="."]
 position = Vector2(-1, 0)
