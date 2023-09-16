@@ -909,7 +909,7 @@ script = ExtResource("1_tfy24")
 [node name="Background" type="Node2D" parent="."]
 
 [node name="BG" type="Sprite2D" parent="Background"]
-position = Vector2(959, 531)
+position = Vector2(984, 531)
 scale = Vector2(3.63667, 3.63667)
 texture = ExtResource("2_ikqyi")
 
@@ -971,6 +971,10 @@ JUMP_FORCE = -550
 
 [node name="Booster5" parent="Objects" instance=ExtResource("2_nb3yw")]
 position = Vector2(1260, 872)
+
+[node name="Booster11" parent="Objects" instance=ExtResource("2_nb3yw")]
+position = Vector2(509, 872)
+JUMP_FORCE = -750
 
 [node name="Booster" parent="Objects" instance=ExtResource("2_nb3yw")]
 position = Vector2(734, 1032)

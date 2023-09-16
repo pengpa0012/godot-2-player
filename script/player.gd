@@ -34,7 +34,7 @@ func _physics_process(delta):
 	if Input.is_joy_button_pressed(player_index, 1) and not parry_pressed:
 		$AnimationPlayer2.play("parry")
 		parry_pressed = true
-		button_pressed_once(false)		
+		button_pressed_once(false)
 
 	if Input.is_joy_button_pressed(player_index, 0) and not jump_pressed and is_on_floor():
 		jump_pressed = true
@@ -109,7 +109,7 @@ func _on_animation_player_animation_finished(anim_name):
 		player_data["life"] -= 1
 		if player_data["life"] <= 0:
 			queue_free()
-#			GLOBAL.players.remove_at(player_index)
+			GLOBAL.players.remove_at(player_index)
 		else:
 			is_dead = false
 			player_data["health"] = 4

@@ -214,6 +214,21 @@ _data = {
 "death": SubResource("Animation_jieva")
 }
 
+[sub_resource type="Animation" id="Animation_rbktm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Shield:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_3oega"]
 resource_name = "parry"
 length = 0.4
@@ -254,21 +269,6 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_rbktm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D/Shield:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w54ur"]
 _data = {
 "RESET": SubResource("Animation_rbktm"),
@@ -299,7 +299,7 @@ hframes = 4
 
 [node name="shieldCollision" type="Area2D" parent="Sprite2D/Shield"]
 position = Vector2(-1.12938e-20, -1.58946e-06)
-scale = Vector2(0.843733, 0.843733)
+scale = Vector2(0.6328, 0.843733)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Shield/shieldCollision"]
 position = Vector2(114.57, -27.6549)

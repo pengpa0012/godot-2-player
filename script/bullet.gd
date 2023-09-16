@@ -26,5 +26,12 @@ func _on_bullet_collision_body_entered(body):
 
 
 func _on_bullet_collision_area_entered(area):
-	if "shieldCollision" in area.name or "bullet" in area.name:
+	if "shieldCollision" in area.name:
+		if area.global_position.x < self.global_position.x:
+			faceRight = true
+			print("RIGGHT")
+		else:
+			faceRight = false
+			print("LEFT")			
+	elif "bullet" in area.name:
 		queue_free()
