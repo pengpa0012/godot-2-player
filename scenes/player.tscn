@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://drtoviyhaqgl8"]
+[gd_scene load_steps=25 format=3 uid="uid://drtoviyhaqgl8"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_cxut4"]
 [ext_resource type="Texture2D" uid="uid://bq2piggyynth0" path="res://assets/Player/player.png" id="2_8tevu"]
 [ext_resource type="Texture2D" uid="uid://be72kbuk7ksq3" path="res://assets/Player/parry.png" id="3_0bugf"]
 [ext_resource type="Script" path="res://script/Healthbar.gd" id="4_7l7u2"]
+[ext_resource type="Texture2D" uid="uid://cnew16m8gasi6" path="res://assets/Player/ammo.png" id="5_5ditj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s04m3"]
 radius = 169.926
@@ -326,7 +327,7 @@ libraries = {
 }
 
 [node name="BulletTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 5.0
 
 [node name="ParryTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -339,6 +340,12 @@ offset_bottom = -24.0
 value = 100.0
 show_percentage = false
 script = ExtResource("4_7l7u2")
+
+[node name="Ammo" type="Sprite2D" parent="."]
+position = Vector2(1, -38)
+texture = ExtResource("5_5ditj")
+hframes = 8
+vframes = 15
 
 [connection signal="area_entered" from="Sprite2D/Shield/shieldCollision" to="." method="_on_shield_collision_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

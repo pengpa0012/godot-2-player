@@ -18,12 +18,13 @@ var player_data = {
 	"gravity": ProjectSettings.get_setting("physics/2d/default_gravity"),
 	"faceRight": true,
 	"canShoot": false,
-	"bullet": 3
+	"bullet": 5
 }
 var jump_pressed = false
 var parry_pressed = false
   
 func _physics_process(delta):
+	$Ammo.set_frame(5 - player_data["bullet"])
 	if is_dead:
 		$Healthbar.value = 0		
 		$AnimationPlayer.play(player_color + "_death")
@@ -31,7 +32,7 @@ func _physics_process(delta):
 		
 	if not is_on_floor():
 		velocity.y += player_data["gravity"] * delta
-	if Input.is_joy_button_pressed(player_index, 1) and not parry_pressed:
+	if Input.is_joy_button_pressed(player_index, 1) and not parry_pressed and player_data["bullet"] <= 0:
 		$AnimationPlayer2.play("parry")
 		parry_pressed = true
 		button_pressed_once(false)
@@ -120,7 +121,7 @@ func _on_animation_player_animation_finished(anim_name):
 		player_data["parry"] = false
 
 func _on_bullet_timer_timeout():
-	player_data["bullet"] = 3
+	player_data["bullet"] = 5
 
 func _on_shield_collision_area_entered(area):
 #	if "bulletCollision" in area.name:
