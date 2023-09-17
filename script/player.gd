@@ -13,7 +13,7 @@ const JUMP_VELOCITY = -350.0
 @onready var GLOBAL = get_node("/root/Global")
 
 var player_data = {
-	"health": 4,
+	"health": 10,
 	"life": 3,
 	"gravity": ProjectSettings.get_setting("physics/2d/default_gravity"),
 	"faceRight": true,
@@ -104,7 +104,7 @@ func shoot():
 	get_parent().add_child(newBullet)
 	
 func player_hurt(amount):
-	$Healthbar.value -= 25	
+	$Healthbar.value -= 10
 	player_data["health"] -= amount
 	
 func _on_animation_player_animation_finished(anim_name):
