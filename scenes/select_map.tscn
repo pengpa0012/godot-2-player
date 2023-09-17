@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bggqhn2ffxcqj"]
+[gd_scene load_steps=5 format=3 uid="uid://bggqhn2ffxcqj"]
 
-[ext_resource type="Texture2D" uid="uid://dn0ncxcbnd1aj" path="res://assets/map.png" id="1_a8uso"]
 [ext_resource type="Script" path="res://script/select_map.gd" id="1_dk1n5"]
+[ext_resource type="Texture2D" uid="uid://bw811hcyd1y5h" path="res://assets/World/Maps/map-1.png" id="2_1vtbx"]
+[ext_resource type="Texture2D" uid="uid://cauivxan2rfxg" path="res://assets/World/Maps/map-3.png" id="3_eo7v7"]
+[ext_resource type="Texture2D" uid="uid://b7uf3vscvlg0u" path="res://assets/World/Maps/map-2.png" id="4_8jexf"]
 
 [node name="Select Map" type="Control"]
 layout_mode = 3
@@ -10,27 +12,27 @@ script = ExtResource("1_dk1n5")
 
 [node name="Button3" type="Button" parent="."]
 layout_mode = 0
-offset_left = 404.0
-offset_top = 422.0
-offset_right = 644.0
-offset_bottom = 602.0
-icon = ExtResource("1_a8uso")
+offset_left = 488.0
+offset_top = 456.0
+offset_right = 728.0
+offset_bottom = 636.0
+icon = ExtResource("2_1vtbx")
 
 [node name="Button2" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1191.0
-offset_top = 437.0
-offset_right = 1431.0
-offset_bottom = 617.0
-icon = ExtResource("1_a8uso")
+offset_left = 1224.0
+offset_top = 456.0
+offset_right = 1464.0
+offset_bottom = 636.0
+icon = ExtResource("3_eo7v7")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 788.0
-offset_top = 410.0
-offset_right = 1028.0
-offset_bottom = 590.0
-icon = ExtResource("1_a8uso")
+offset_left = 856.0
+offset_top = 456.0
+offset_right = 1096.0
+offset_bottom = 636.0
+icon = ExtResource("4_8jexf")
 
 [connection signal="button_down" from="Button3" to="." method="_on_button_3_button_down"]
 [connection signal="button_down" from="Button2" to="." method="_on_button_2_button_down"]
