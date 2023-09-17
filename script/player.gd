@@ -25,6 +25,7 @@ var parry_pressed = false
   
 func _physics_process(delta):
 	$Ammo.set_frame(5 - player_data["bullet"])
+	$Shieldbar.value = 100 - ($ParryTimer.time_left / 5 * 100)
 	if is_dead:
 		$Healthbar.value = 0		
 		$AnimationPlayer.play(player_color + "_death")
