@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0o1bsj80bc4m"]
+[gd_scene load_steps=13 format=3 uid="uid://c0o1bsj80bc4m"]
 
 [ext_resource type="Script" path="res://script/world.gd" id="1_tfy24"]
 [ext_resource type="Texture2D" uid="uid://bhw4iso5plo5m" path="res://assets/World/Tiles/Tileset.png" id="2_ap0fe"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c0gr4l5nhq2ax" path="res://scenes/shuriken.tscn" id="4_8c8gu"]
 [ext_resource type="Texture2D" uid="uid://domnnxse7yeua" path="res://assets/World/Background/Layer 3 clound anim1.png" id="4_wjnc5"]
 [ext_resource type="PackedScene" uid="uid://b10ah3rhfywhd" path="res://scenes/trap.tscn" id="5_3pw6r"]
+[ext_resource type="PackedScene" uid="uid://cs1csmmwqinmp" path="res://scenes/deadzone.tscn" id="10_b1l72"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y7pye"]
 texture = ExtResource("2_ap0fe")
@@ -1019,3 +1020,6 @@ layer_0/tile_data = PackedInt32Array(3538944, 131072, 2, 3604480, 65536, 1, 3670
 
 [node name="RestartTimer" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="Deadzone" parent="." instance=ExtResource("10_b1l72")]
+position = Vector2(1007, 1156)

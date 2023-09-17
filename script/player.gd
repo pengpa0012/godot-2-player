@@ -34,7 +34,6 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += player_data["gravity"] * delta
 	if Input.is_joy_button_pressed(player_index, 1) and not parry_pressed and $ParryTimer.time_left <= 0:
-		print("AHHH")
 		$AnimationPlayer2.play("parry")
 		parry_pressed = true
 		button_pressed_once(false)
@@ -137,7 +136,6 @@ func _on_area_2d_body_entered(body):
 
 
 func _on_parry_timer_timeout():
-	print("yerewr")
 	$ParryTimer.stop()
 	pass
 #	playerParryCollision.disabled = true	
