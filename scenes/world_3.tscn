@@ -1010,3 +1010,8 @@ wait_time = 5.0
 
 [node name="Deadzone" parent="." instance=ExtResource("9_5m26s")]
 position = Vector2(980, 1164)
+
+[node name="CountDownTimer" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="timeout" from="CountDownTimer" to="." method="_on_count_down_timer_timeout"]

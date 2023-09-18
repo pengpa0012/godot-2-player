@@ -110,8 +110,8 @@ func _on_animation_player_animation_finished(anim_name):
 	if "death" in anim_name:
 		player_data["life"] -= 1
 		if player_data["life"] <= 0:
+#			GLOBAL.players.remove_at(player_index)			
 			queue_free()
-			GLOBAL.players.remove_at(player_index)
 		else:
 			is_dead = false
 			player_data["health"] = 4

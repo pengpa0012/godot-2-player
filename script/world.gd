@@ -4,15 +4,17 @@ const PLAYER_SCENE_PATH = preload("res://scenes/player.tscn")
 @onready var display_size = get_viewport().get_visible_rect().size
 var colors = ["black", "blue"]
 @onready var GLOBAL = get_node("/root/Global")
-
+var drop_players = false
 
 func _process(_delta):
 	var connected_joypads = Input.get_connected_joypads()
-	if len(GLOBAL.players) <= 0:
-		$RestartTimer.start()
-	for player in connected_joypads:
-		if player not in GLOBAL.players:
-			add_player(player)
+#	if len(GLOBAL.players) <= 0:
+#		$RestartTimer.start()
+
+	if drop_players:
+		for player in connected_joypads:
+			if player not in GLOBAL.players:
+				add_player(player)
 
 func add_player(index):
 	var randomize = randi_range(0, 1)
@@ -25,5 +27,8 @@ func add_player(index):
 	add_child(player_instance)
 
 
-func _on_restart_timer_timeout():
-	print(len(GLOBAL.players))	
+#func _on_restart_timer_timeout():
+#	print(len(GLOBAL.players))	
+
+func _on_count_down_timer_timeout():
+	drop_players = true
