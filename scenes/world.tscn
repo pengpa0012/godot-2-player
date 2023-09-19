@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://1ej2t83si6kb"]
+[gd_scene load_steps=16 format=3 uid="uid://1ej2t83si6kb"]
 
 [ext_resource type="Script" path="res://script/world.gd" id="1_n1osx"]
 [ext_resource type="Texture2D" uid="uid://c8b6bftf7k2y4" path="res://assets/pixil-frame-0 (86).png" id="2_04lff"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c2kjga7if5pbg" path="res://scenes/portal.tscn" id="8_lfg65"]
 [ext_resource type="PackedScene" uid="uid://dmsqt2h5bcfn4" path="res://scenes/moving_platform.tscn" id="9_csgqk"]
 [ext_resource type="PackedScene" uid="uid://cs1csmmwqinmp" path="res://scenes/deadzone.tscn" id="11_73g1f"]
+[ext_resource type="FontFile" uid="uid://bhy1rdn472yk0" path="res://assets/Font/E1234.ttf" id="12_2teu4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y7pye"]
 texture = ExtResource("4_ky1kk")
@@ -905,6 +906,9 @@ texture = ExtResource("4_ky1kk")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_y7pye")
 
+[sub_resource type="Theme" id="Theme_l7oiu"]
+default_font = ExtResource("12_2teu4")
+
 [node name="world" type="Node2D"]
 script = ExtResource("1_n1osx")
 
@@ -1026,5 +1030,40 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 
-[connection signal="timeout" from="RestartTimer" to="." method="_on_restart_timer_timeout"]
+[node name="Countdown" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -3.0
+offset_top = 5.0
+offset_right = 1905.0
+offset_bottom = 1064.0
+
+[node name="TextureRect" type="ColorRect" parent="Countdown"]
+layout_mode = 0
+offset_left = -42.0
+offset_top = -33.0
+offset_right = 1945.0
+offset_bottom = 1105.0
+color = Color(0, 0, 0, 0.380392)
+
+[node name="Label" type="RichTextLabel" parent="Countdown"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -112.5
+offset_right = 200.0
+offset_bottom = 112.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_l7oiu")
+theme_override_font_sizes/normal_font_size = 200
+bbcode_enabled = true
+text = "10"
+scroll_active = false
+autowrap_mode = 0
+
 [connection signal="timeout" from="CountDownTimer" to="." method="_on_count_down_timer_timeout"]
