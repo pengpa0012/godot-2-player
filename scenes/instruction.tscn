@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://ladjqqe8ga2e"]
+
+[ext_resource type="Texture2D" uid="uid://lgsiccfxnl63" path="res://assets/shoot.png" id="1_gc8lb"]
+[ext_resource type="Texture2D" uid="uid://cd487ynebtwh7" path="res://assets/parry.png" id="2_qomk4"]
+[ext_resource type="Texture2D" uid="uid://bayyjwg1bsfks" path="res://assets/jump.png" id="3_5xk3s"]
+
+[node name="Instruction" type="Node2D"]
+
+[node name="Shoot" type="Sprite2D" parent="."]
+position = Vector2(908, 395)
+texture = ExtResource("1_gc8lb")
+
+[node name="Parry" type="Sprite2D" parent="."]
+position = Vector2(1472, 352)
+scale = Vector2(1.9259, 1.9259)
+texture = ExtResource("2_qomk4")
+
+[node name="Jump" type="Sprite2D" parent="."]
+position = Vector2(363, 404)
+texture = ExtResource("3_5xk3s")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 696.0
+offset_top = 640.0
+offset_right = 1113.0
+offset_bottom = 845.0
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "PRESS BOX/X TO SHOOT"
+scroll_active = false
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+offset_left = 1328.0
+offset_top = 640.0
+offset_right = 1745.0
+offset_bottom = 845.0
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "PRESS CIRCLE/B TO PARRY"
+scroll_active = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 176.0
+offset_top = 640.0
+offset_right = 593.0
+offset_bottom = 845.0
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "PRESS X/A TO JUMP"
+scroll_active = false
