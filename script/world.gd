@@ -5,23 +5,19 @@ const PLAYER_SCENE_PATH = preload("res://scenes/player.tscn")
 var colors = ["black", "blue"]
 @onready var GLOBAL = get_node("/root/Global")
 @onready var counter = $Countdown/Label
-var drop_players = false
 
 func _process(_delta):
-	var connected_joypads = Input.get_connected_joypads()
 	counter.text = "[center]%s[/center]" % str(round($CountDownTimer.time_left))
-	
+	if len(GLOBAL.players) <= 1 and !$Countdown.visible:
+		GLOBAL.players = []
+		get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
+		
 	if $CountDownTimer.time_left <= 0:
 		$Countdown.visible = false
 
-	if drop_players:
-		for player in connected_joypads:
-			if player not in GLOBAL.players:
-				add_player(player)
-
 func add_player(index):
 	var randomize = randi_range(0, 1)
-	GLOBAL.players.append(index)  
+	GLOBAL.players.append(index) 
 	var player_instance = PLAYER_SCENE_PATH.instantiate()
 	player_instance.position.x = randi_range(0, display_size.x - 100)
 	player_instance.position.y = 50
@@ -31,4 +27,7 @@ func add_player(index):
 
 
 func _on_count_down_timer_timeout():
-	drop_players = true
+	var connected_joypads = Input.get_connected_joypads()	
+	for player in connected_joypads:
+		if player not in GLOBAL.players:
+			add_player(player)
