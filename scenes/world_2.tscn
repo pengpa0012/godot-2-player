@@ -1033,6 +1033,53 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 
+[node name="Winner" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -6.0
+offset_top = 10.0
+offset_right = 1902.0
+offset_bottom = 1069.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="ColorRect" parent="Winner"]
+layout_mode = 0
+offset_left = -18.0
+offset_top = -28.0
+offset_right = 1937.0
+offset_bottom = 1105.0
+color = Color(0, 0, 0, 0.380392)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="RichTextLabel" parent="Winner"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.393606
+anchor_top = 0.471671
+anchor_right = 0.617925
+anchor_bottom = 0.518886
+offset_left = -200.0
+offset_top = -112.5
+offset_right = 200.0
+offset_bottom = 112.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 200
+bbcode_enabled = true
+text = "WINNER"
+scroll_active = false
+autowrap_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="Winner"]
+layout_mode = 0
+offset_left = 779.0
+offset_top = 681.0
+offset_right = 1150.0
+offset_bottom = 787.0
+text = "Main Menu"
+
 [node name="Countdown" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -1070,3 +1117,4 @@ scroll_active = false
 autowrap_mode = 0
 
 [connection signal="timeout" from="CountDownTimer" to="." method="_on_count_down_timer_timeout"]
+[connection signal="pressed" from="Winner/Button" to="." method="_on_button_pressed"]

@@ -1,13 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://ladjqqe8ga2e"]
+[gd_scene load_steps=7 format=3 uid="uid://ladjqqe8ga2e"]
 
+[ext_resource type="Script" path="res://script/instruction.gd" id="1_d6ssl"]
 [ext_resource type="Texture2D" uid="uid://lgsiccfxnl63" path="res://assets/shoot.png" id="1_gc8lb"]
 [ext_resource type="Texture2D" uid="uid://cd487ynebtwh7" path="res://assets/parry.png" id="2_qomk4"]
 [ext_resource type="Texture2D" uid="uid://bayyjwg1bsfks" path="res://assets/jump.png" id="3_5xk3s"]
+[ext_resource type="Texture2D" uid="uid://dkdbkpo42k0rt" path="res://assets/xbox_buttons.png" id="4_rw6lf"]
+[ext_resource type="Texture2D" uid="uid://dyblxt7ir7yk0" path="res://assets/ps4_buttons.png" id="5_osup3"]
 
 [node name="Instruction" type="Node2D"]
+script = ExtResource("1_d6ssl")
 
 [node name="Shoot" type="Sprite2D" parent="."]
-position = Vector2(908, 395)
+position = Vector2(922, 395)
 texture = ExtResource("1_gc8lb")
 
 [node name="Parry" type="Sprite2D" parent="."]
@@ -20,31 +24,94 @@ position = Vector2(363, 404)
 texture = ExtResource("3_5xk3s")
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
-offset_left = 696.0
-offset_top = 640.0
-offset_right = 1113.0
-offset_bottom = 845.0
+offset_left = 782.0
+offset_top = 696.0
+offset_right = 958.0
+offset_bottom = 768.0
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
-text = "PRESS BOX/X TO SHOOT"
+text = "SHOOT"
 scroll_active = false
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="."]
-offset_left = 1328.0
-offset_top = 640.0
-offset_right = 1745.0
-offset_bottom = 845.0
+offset_left = 1384.0
+offset_top = 696.0
+offset_right = 1552.0
+offset_bottom = 776.0
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
-text = "PRESS CIRCLE/B TO PARRY"
+text = "PARRY"
 scroll_active = false
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 176.0
-offset_top = 640.0
-offset_right = 593.0
-offset_bottom = 845.0
+offset_left = 256.0
+offset_top = 696.0
+offset_right = 416.0
+offset_bottom = 776.0
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
-text = "PRESS X/A TO JUMP"
+text = " JUMP"
 scroll_active = false
+
+[node name="XBOX" type="Sprite2D" parent="."]
+position = Vector2(288, 648)
+scale = Vector2(5, 5)
+texture = ExtResource("4_rw6lf")
+hframes = 3
+vframes = 4
+
+[node name="XBOX2" type="Sprite2D" parent="."]
+position = Vector2(822, 651)
+scale = Vector2(5, 5)
+texture = ExtResource("4_rw6lf")
+hframes = 3
+vframes = 4
+frame = 6
+
+[node name="PS2" type="Sprite2D" parent="."]
+position = Vector2(918, 651)
+scale = Vector2(5, 5)
+texture = ExtResource("5_osup3")
+hframes = 3
+vframes = 4
+frame = 9
+
+[node name="PS" type="Sprite2D" parent="."]
+position = Vector2(384, 648)
+scale = Vector2(5, 5)
+texture = ExtResource("5_osup3")
+hframes = 3
+vframes = 4
+frame = 6
+
+[node name="XBOX3" type="Sprite2D" parent="."]
+position = Vector2(1416, 648)
+scale = Vector2(5, 5)
+texture = ExtResource("4_rw6lf")
+hframes = 3
+vframes = 4
+frame = 3
+
+[node name="PS3" type="Sprite2D" parent="."]
+position = Vector2(1512, 648)
+scale = Vector2(5, 5)
+texture = ExtResource("5_osup3")
+hframes = 3
+vframes = 4
+frame = 3
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 728.0
+offset_top = 880.0
+offset_right = 1099.0
+offset_bottom = 986.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Go Back"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
