@@ -64,6 +64,7 @@ offset_right = 1099.0
 offset_bottom = 986.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_font_sizes/font_size = 60
 text = "Go Back"
 
 [node name="Button3" parent="." instance=ExtResource("5_7tn4p")]

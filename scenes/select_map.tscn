@@ -34,6 +34,15 @@ offset_right = 1096.0
 offset_bottom = 636.0
 icon = ExtResource("4_8jexf")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 823.0
+offset_top = 286.0
+offset_right = 1159.0
+offset_bottom = 390.0
+theme_override_font_sizes/normal_font_size = 60
+text = "Select Map"
+
 [connection signal="button_down" from="Button3" to="." method="_on_button_3_button_down"]
 [connection signal="button_down" from="Button2" to="." method="_on_button_2_button_down"]
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

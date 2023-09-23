@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cssl52yh672su"]
+[gd_scene load_steps=3 format=3 uid="uid://cssl52yh672su"]
 
 [ext_resource type="Script" path="res://script/start_screen.gd" id="1_v54s4"]
+
+[sub_resource type="Theme" id="Theme_gapi1"]
 
 [node name="start_screen" type="Node2D"]
 script = ExtResource("1_v54s4")
@@ -16,7 +18,9 @@ offset_left = 805.0
 offset_top = 375.0
 offset_right = 1176.0
 offset_bottom = 481.0
-text = "Start"
+theme = SubResource("Theme_gapi1")
+theme_override_font_sizes/font_size = 60
+text = "START"
 
 [node name="Button2" type="Button" parent="Container"]
 layout_mode = 0
@@ -24,6 +28,7 @@ offset_left = 807.0
 offset_top = 510.0
 offset_right = 1178.0
 offset_bottom = 616.0
+theme_override_font_sizes/font_size = 50
 text = "Instruction"
 
 [node name="Button3" type="Button" parent="Container"]
@@ -32,6 +37,7 @@ offset_left = 809.0
 offset_top = 640.0
 offset_right = 1180.0
 offset_bottom = 746.0
+theme_override_font_sizes/font_size = 60
 text = "Quit"
 
 [connection signal="pressed" from="Container/Button" to="." method="_on_button_pressed"]
