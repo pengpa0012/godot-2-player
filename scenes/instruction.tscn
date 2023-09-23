@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ladjqqe8ga2e"]
+[gd_scene load_steps=6 format=3 uid="uid://ladjqqe8ga2e"]
 
 [ext_resource type="Script" path="res://script/instruction.gd" id="1_d6ssl"]
 [ext_resource type="Texture2D" uid="uid://lgsiccfxnl63" path="res://assets/shoot.png" id="1_gc8lb"]
 [ext_resource type="Texture2D" uid="uid://cd487ynebtwh7" path="res://assets/parry.png" id="2_qomk4"]
 [ext_resource type="Texture2D" uid="uid://bayyjwg1bsfks" path="res://assets/jump.png" id="3_5xk3s"]
-[ext_resource type="Texture2D" uid="uid://dkdbkpo42k0rt" path="res://assets/xbox_buttons.png" id="4_rw6lf"]
-[ext_resource type="Texture2D" uid="uid://dyblxt7ir7yk0" path="res://assets/ps4_buttons.png" id="5_osup3"]
+[ext_resource type="PackedScene" uid="uid://wjfy88mjpwie" path="res://scenes/button.tscn" id="5_7tn4p"]
 
 [node name="Instruction" type="Node2D"]
 script = ExtResource("1_d6ssl")
@@ -53,53 +52,6 @@ bbcode_enabled = true
 text = " JUMP"
 scroll_active = false
 
-[node name="XBOX" type="Sprite2D" parent="."]
-position = Vector2(288, 648)
-scale = Vector2(5, 5)
-texture = ExtResource("4_rw6lf")
-hframes = 3
-vframes = 4
-
-[node name="XBOX2" type="Sprite2D" parent="."]
-position = Vector2(822, 651)
-scale = Vector2(5, 5)
-texture = ExtResource("4_rw6lf")
-hframes = 3
-vframes = 4
-frame = 6
-
-[node name="PS2" type="Sprite2D" parent="."]
-position = Vector2(918, 651)
-scale = Vector2(5, 5)
-texture = ExtResource("5_osup3")
-hframes = 3
-vframes = 4
-frame = 9
-
-[node name="PS" type="Sprite2D" parent="."]
-position = Vector2(384, 648)
-scale = Vector2(5, 5)
-texture = ExtResource("5_osup3")
-hframes = 3
-vframes = 4
-frame = 6
-
-[node name="XBOX3" type="Sprite2D" parent="."]
-position = Vector2(1416, 648)
-scale = Vector2(5, 5)
-texture = ExtResource("4_rw6lf")
-hframes = 3
-vframes = 4
-frame = 3
-
-[node name="PS3" type="Sprite2D" parent="."]
-position = Vector2(1512, 648)
-scale = Vector2(5, 5)
-texture = ExtResource("5_osup3")
-hframes = 3
-vframes = 4
-frame = 3
-
 [node name="Button" type="Button" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
@@ -113,5 +65,28 @@ offset_bottom = 986.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Go Back"
+
+[node name="Button3" parent="." instance=ExtResource("5_7tn4p")]
+position = Vector2(384, 640)
+BUTTON_TYPE = "XBOX_A"
+
+[node name="Button4" parent="." instance=ExtResource("5_7tn4p")]
+position = Vector2(1520, 640)
+BUTTON_TYPE = "XBOX_B"
+
+[node name="Button5" parent="." instance=ExtResource("5_7tn4p")]
+position = Vector2(1416, 640)
+BUTTON_TYPE = "PS_CIRCLE"
+
+[node name="Button6" parent="." instance=ExtResource("5_7tn4p")]
+position = Vector2(920, 640)
+BUTTON_TYPE = "XBOX_X"
+
+[node name="Button7" parent="." instance=ExtResource("5_7tn4p")]
+position = Vector2(816, 640)
+BUTTON_TYPE = "PS_BOX"
+
+[node name="Button2" parent="." instance=ExtResource("5_7tn4p")]
+position = Vector2(280, 640)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

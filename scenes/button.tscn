@@ -1,0 +1,184 @@
+[gd_scene load_steps=13 format=3 uid="uid://wjfy88mjpwie"]
+
+[ext_resource type="Texture2D" uid="uid://c5m04t3u1c8rv" path="res://assets/buttons.png" id="1_lhi4l"]
+[ext_resource type="Script" path="res://script/button.gd" id="1_w532y"]
+
+[sub_resource type="Animation" id="Animation_u8rl2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+
+[sub_resource type="Animation" id="Animation_gwx5b"]
+resource_name = "PS_X"
+length = 0.45
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [12, 13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_rjqiw"]
+resource_name = "PS_BOX"
+length = 0.45
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [18, 19, 20]
+}
+
+[sub_resource type="Animation" id="Animation_gj1m6"]
+resource_name = "PS_CIRCLE"
+length = 0.45
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_5b553"]
+resource_name = "PS_TRI"
+length = 0.45
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_v5uhf"]
+resource_name = "XBOX_A"
+length = 0.45
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_gusbe"]
+resource_name = "XBOX_B"
+length = 0.45
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_d5cku"]
+resource_name = "XBOX_Y"
+length = 0.45
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [21, 22, 23]
+}
+
+[sub_resource type="Animation" id="Animation_r2bap"]
+resource_name = "XBOX_X"
+length = 0.45
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [15, 16, 17]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_31lwr"]
+_data = {
+"PS_BOX": SubResource("Animation_rjqiw"),
+"PS_CIRCLE": SubResource("Animation_gj1m6"),
+"PS_TRI": SubResource("Animation_5b553"),
+"PS_X": SubResource("Animation_gwx5b"),
+"RESET": SubResource("Animation_u8rl2"),
+"XBOX_A": SubResource("Animation_v5uhf"),
+"XBOX_B": SubResource("Animation_gusbe"),
+"XBOX_X": SubResource("Animation_r2bap"),
+"XBOX_Y": SubResource("Animation_d5cku")
+}
+
+[node name="Button" type="Node2D"]
+script = ExtResource("1_w532y")
+
+[node name="Buttons" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("1_lhi4l")
+hframes = 6
+vframes = 4
+frame = 12
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Buttons")
+libraries = {
+"": SubResource("AnimationLibrary_31lwr")
+}
