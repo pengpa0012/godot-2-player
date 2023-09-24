@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://1ej2t83si6kb"]
+[gd_scene load_steps=17 format=3 uid="uid://1ej2t83si6kb"]
 
 [ext_resource type="Script" path="res://script/world.gd" id="1_n1osx"]
 [ext_resource type="Texture2D" uid="uid://c8b6bftf7k2y4" path="res://assets/pixil-frame-0 (86).png" id="2_04lff"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dmsqt2h5bcfn4" path="res://scenes/moving_platform.tscn" id="9_csgqk"]
 [ext_resource type="PackedScene" uid="uid://cs1csmmwqinmp" path="res://scenes/deadzone.tscn" id="11_73g1f"]
 [ext_resource type="FontFile" uid="uid://bhy1rdn472yk0" path="res://assets/Font/E1234.ttf" id="12_2teu4"]
+[ext_resource type="AudioStream" uid="uid://cxqsadakoqufo" path="res://assets/SFX/bg.mp3" id="13_ephx0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y7pye"]
 texture = ExtResource("4_ky1kk")
@@ -1113,6 +1114,13 @@ bbcode_enabled = true
 text = "10"
 scroll_active = false
 autowrap_mode = 0
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="BG" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("13_ephx0")
+volume_db = -30.0
+autoplay = true
 
 [connection signal="timeout" from="CountDownTimer" to="." method="_on_count_down_timer_timeout"]
 [connection signal="pressed" from="Winner/Button" to="." method="_on_button_pressed"]

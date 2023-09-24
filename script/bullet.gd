@@ -27,6 +27,7 @@ func _on_bullet_collision_body_entered(body):
 
 func _on_bullet_collision_area_entered(area):
 	if "shieldCollision" in area.name:
+		$SFX/parry.play()
 		if area.global_position.x < self.global_position.x:
 			faceRight = true
 			print("RIGGHT")

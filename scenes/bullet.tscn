@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://jirgdnv4ws74"]
+[gd_scene load_steps=9 format=3 uid="uid://jirgdnv4ws74"]
 
 [ext_resource type="Script" path="res://script/bullet.gd" id="1_54tga"]
 [ext_resource type="Texture2D" uid="uid://b8q75p7vqctx7" path="res://assets/bullet.png" id="2_m80en"]
+[ext_resource type="AudioStream" uid="uid://clg73gl5r7tg" path="res://assets/SFX/parry.wav" id="3_1h41h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfwk1"]
 size = Vector2(10, 4)
@@ -74,6 +75,11 @@ libraries = {
 position = Vector2(2.5, 0)
 shape = SubResource("RectangleShape2D_ht0ly")
 debug_color = Color(0.984314, 0, 0.34902, 0.419608)
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="parry" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("3_1h41h")
 
 [connection signal="area_entered" from="bulletCollision" to="." method="_on_bullet_collision_area_entered"]
 [connection signal="body_entered" from="bulletCollision" to="." method="_on_bullet_collision_body_entered"]

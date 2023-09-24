@@ -1,10 +1,13 @@
-[gd_scene load_steps=25 format=3 uid="uid://drtoviyhaqgl8"]
+[gd_scene load_steps=28 format=3 uid="uid://drtoviyhaqgl8"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_cxut4"]
 [ext_resource type="Texture2D" uid="uid://bq2piggyynth0" path="res://assets/Player/player.png" id="2_8tevu"]
 [ext_resource type="Texture2D" uid="uid://be72kbuk7ksq3" path="res://assets/Player/parry.png" id="3_0bugf"]
 [ext_resource type="Script" path="res://script/Healthbar.gd" id="4_7l7u2"]
 [ext_resource type="Texture2D" uid="uid://cnew16m8gasi6" path="res://assets/Player/ammo.png" id="5_5ditj"]
+[ext_resource type="AudioStream" uid="uid://bdqmtmo3hlmqn" path="res://assets/SFX/death.mp3" id="6_4s767"]
+[ext_resource type="AudioStream" uid="uid://blyqx14xhvdyb" path="res://assets/SFX/shoot.wav" id="6_ivh7y"]
+[ext_resource type="AudioStream" uid="uid://b3hjr2j5eo47p" path="res://assets/SFX/hurt.wav" id="7_xhhom"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s04m3"]
 radius = 169.926
@@ -357,6 +360,22 @@ scale = Vector2(1.0625, 1)
 texture = ExtResource("5_5ditj")
 hframes = 8
 vframes = 15
+
+[node name="SFX" type="Node2D" parent="."]
+position = Vector2(-3.55271e-15, 5.96046e-08)
+scale = Vector2(1.13607, 1.13607)
+
+[node name="death" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_4s767")
+volume_db = -25.0
+
+[node name="hurt" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("7_xhhom")
+volume_db = -15.0
+
+[node name="shoot" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_ivh7y")
+volume_db = -15.0
 
 [connection signal="area_entered" from="Sprite2D/Shield/shieldCollision" to="." method="_on_shield_collision_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

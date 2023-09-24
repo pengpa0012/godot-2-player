@@ -27,6 +27,8 @@ func _physics_process(delta):
 	$Ammo.set_frame(5 - player_data["bullet"])
 	$Shieldbar.value = 100 - ($ParryTimer.time_left / 5 * 100)
 	if is_dead:
+		if !$SFX/death.playing:
+			$SFX/death.play()				
 		$Healthbar.value = 0		
 		$AnimationPlayer.play(player_color + "_death")
 		return
@@ -52,6 +54,8 @@ func _physics_process(delta):
 	var directionY = Input.get_joy_axis(player_index, 1)
 	
 	if player_data["health"] <= 0:
+		if !$SFX/death.playing:
+			$SFX/death.play()
 		$AnimationPlayer.play(player_color + "_death")
 	else:
 		if directionX:
@@ -96,6 +100,7 @@ func button_pressed_once(isJump):
 		$ParryTimer.start()
 	
 func shoot():
+	$SFX/shoot.play()
 	var newBullet = bullet.instantiate()
 	newBullet.position = playerMarker.global_position
 	newBullet.faceRight = player_data["faceRight"]
@@ -104,6 +109,7 @@ func shoot():
 	
 func player_hurt(amount):
 	$Healthbar.value -= 10
+	$SFX/hurt.play()
 	player_data["health"] -= amount
 	
 func _on_animation_player_animation_finished(anim_name):
